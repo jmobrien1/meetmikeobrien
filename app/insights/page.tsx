@@ -78,7 +78,7 @@ export default function InsightsPage() {
                 Capabilities, and a managed agentic ecosystem.
               </p>
               <p className="font-sans text-body-sm text-slate/70 mb-8">
-                ~8,000 words &middot; 7 sections &middot; Published by Thoughtworks
+                ~8,000 words &middot; 7 sections
               </p>
               <Link
                 href="/downloads/composable-agency.pdf"
