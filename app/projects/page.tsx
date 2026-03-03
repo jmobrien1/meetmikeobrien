@@ -83,29 +83,31 @@ export default function ProjectsPage() {
             </div>
           </Reveal>
 
-          {/* Chef de Cuisine */}
-          <Reveal delay={300}>
-            <div className="h-full">
-              <div className="aspect-[3/2] rounded-t-card overflow-hidden relative">
+        </div>
+
+        {/* Chef de Cuisine — full-width below the grid */}
+        <Reveal delay={300}>
+          <div className="mt-8 rounded-card border border-teal/[0.08] bg-navy-mid overflow-hidden">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+              <div className="aspect-[3/2] overflow-hidden relative">
                 <ImageLightbox src="/images/ChefDeCuisine.png" alt="Chef de Cuisine recipe input interface" />
-              </div>
-              <div className="p-6 border border-teal/[0.08] border-t-0 bg-navy-mid">
-                <h3 className="font-serif text-card-title font-normal text-white mb-2">Chef de Cuisine</h3>
-                <p className="font-sans text-body-sm text-slate leading-[1.7]">
-                  An AI culinary assistant that turns whatever ingredients you have on hand
-                  into restaurant-quality recipes. Uses a 4-agent pipeline — auditing
-                  equipment and skill level, translating ingredients into a dish concept,
-                  scheduling a phased cooking timeline, and adding executive chef finishing
-                  touches — powered by local LLM inference and RAG with a culinary knowledge base.
-                </p>
               </div>
               <div className="aspect-[3/2] overflow-hidden relative">
                 <ImageLightbox src="/images/ChefDeCuisine2.png" alt="Chef de Cuisine Mise en Temps cooking timeline" />
               </div>
-              <div className="h-2 rounded-b-card bg-navy-mid border-x border-b border-teal/[0.08]" />
             </div>
-          </Reveal>
-        </div>
+            <div className="p-6">
+              <h3 className="font-serif text-card-title font-normal text-white mb-2">Chef de Cuisine</h3>
+              <p className="font-sans text-body-sm text-slate leading-[1.7]">
+                An AI culinary assistant that turns whatever ingredients you have on hand
+                into restaurant-quality recipes. Uses a 4-agent pipeline — auditing
+                equipment and skill level, translating ingredients into a dish concept,
+                scheduling a phased cooking timeline, and adding executive chef finishing
+                touches — powered by local LLM inference and RAG with a culinary knowledge base.
+              </p>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
