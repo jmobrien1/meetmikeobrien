@@ -48,12 +48,12 @@ const archLayers = [
   {
     id: 'infra',
     label: 'Cloud-Native Infrastructure',
-    subtitle: 'GCP / multi-cloud platform foundation',
+    subtitle: 'Multi-cloud platform foundation',
     color: '#0d8668',
     icon: '\u{2601}\u{FE0F}',
-    items: ['Vertex AI', 'BigQuery', 'GKE / Cloud Run', 'Apigee Gateway', 'Security Command Center'],
+    items: ['AI/ML Model Serving', 'Cloud Analytics', 'Container Orchestration', 'API Gateway', 'Security & Compliance'],
     detail:
-      'The foundation layer built on Google Cloud Platform — Vertex AI for model serving, BigQuery for analytics, GKE for container orchestration, and Apigee for API management. FedRAMP authorized, CMMC 2.0 compliant.',
+      'A cloud-agnostic foundation layer — AI/ML model serving, scalable analytics, container orchestration, and API management deployed across any FedRAMP-authorized provider. CMMC 2.0 compliant with infrastructure-as-code for portability.',
   },
 ];
 
