@@ -73,12 +73,12 @@ export default function InsightsPage() {
                 The Composable Agency
               </h1>
               <p className="font-sans text-body text-slate leading-[1.7] mb-4">
-                A comprehensive framework for autonomous public service — architecting the agentic,
-                composable government. Synthesizing MACH architecture, Packaged Government
-                Capabilities, and a managed agentic ecosystem.
+                A tactical blueprint for the 2026 Point of Peril — from Packaged Government
+                Capabilities and Data Mesh to multi-agent systems, with a 270-day roadmap
+                to operationalize the composable, agentic government.
               </p>
               <p className="font-sans text-body-sm text-slate/70 mb-8">
-                ~8,000 words &middot; 7 sections
+                ~2,500 words &middot; 6 sections
               </p>
               <Link
                 href="/downloads/composable-agency.pdf"
@@ -104,7 +104,7 @@ export default function InsightsPage() {
           <SectionHeader
             eyebrow="Interactive Framework"
             title="The Composable Agency"
-            subtitle="A blueprint for autonomous public service — built on MACH architecture, Packaged Government Capabilities, and a managed agentic ecosystem. Click any layer to explore."
+            subtitle="From Packaged Government Capabilities and Data Mesh to multi-agent systems — explore the layers of the composable, agentic government. Click any layer to explore."
           />
           <ComposableVisualizer />
         </div>
