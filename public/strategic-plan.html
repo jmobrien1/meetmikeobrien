@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scaling the SLG Business to $200M — Infosys Public Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ips-blue: #007CC3;
+  --ips-navy: #061838;
+  --ips-purple: #963596;
+  --ips-orange: #DF9926;
+  --ips-bright-blue: #0F9FFA;
+  --ips-coral: #F16C51;
+  --ips-teal: #00B28F;
+  --ips-grey: #7E7E7E;
+  --ips-light-grey: #F2F2F2;
+  --ips-white: #FFFFFF;
+  --ips-black: #000000;
+  --font-heading: 'Oswald', sans-serif;
+  --font-body: 'Source Sans 3', Arial, sans-serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--ips-black);
+  background: var(--ips-white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ─── NAV ─── */
+.nav {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+  background: rgba(6,24,56,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,124,195,0.2);
+  transition: background 0.3s;
+}
+.nav-inner {
+  max-width: 1400px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px; height: 64px;
+}
+.nav-logo {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 1.1rem; color: var(--ips-white);
+  letter-spacing: 1px; text-transform: uppercase;
+  display: flex; align-items: center; gap: 8px;
+}
+.nav-logo .accent { color: var(--ips-blue); }
+.nav-links { display: flex; gap: 6px; align-items: center; }
+.nav-links a {
+  font-family: var(--font-heading); font-weight: 500;
+  font-size: 0.72rem; text-transform: uppercase;
+  letter-spacing: 1.5px; color: rgba(255,255,255,0.7);
+  text-decoration: none; padding: 8px 12px;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--ips-blue); }
+.nav-cta {
+  background: transparent; border: 1px solid var(--ips-blue);
+  color: var(--ips-blue) !important; padding: 8px 20px !important;
+  transition: all 0.3s !important;
+}
+.nav-cta:hover { background: var(--ips-blue); color: var(--ips-white) !important; }
+
+/* ─── HERO ─── */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--ips-navy);
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(0,124,195,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(150,53,150,0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(0,178,143,0.05) 0%, transparent 70%);
+}
+.hero-grid {
+  position: absolute; inset: 0; opacity: 0.04;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+.hero-corner {
+  position: absolute; bottom: 0; right: 0;
+  width: 0; height: 0;
+  border-bottom: 200px solid var(--ips-teal);
+  border-left: 200px solid transparent;
+  opacity: 0.6;
+}
+.hero-corner-2 {
+  position: absolute; top: 0; left: 0;
+  width: 0; height: 0;
+  border-top: 140px solid var(--ips-blue);
+  border-right: 140px solid transparent;
+  opacity: 0.3;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 1000px; padding: 120px 40px 80px;
+  text-align: center;
+}
+.hero-eyebrow {
+  font-family: var(--font-heading); font-weight: 500;
+  font-size: 0.85rem; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--ips-teal); margin-bottom: 24px;
+  opacity: 0; animation: fadeUp 0.8s 0.3s forwards;
+}
+.hero h1 {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 1.05; letter-spacing: -2px;
+  color: var(--ips-white); text-transform: uppercase;
+  margin-bottom: 24px;
+  opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
+}
+.hero h1 .blue { color: var(--ips-blue); }
+.hero h1 .teal { color: var(--ips-teal); }
+.hero-sub {
+  font-size: 1.2rem; color: rgba(255,255,255,0.7);
+  font-weight: 300; max-width: 700px; margin: 0 auto 16px;
+  opacity: 0; animation: fadeUp 0.8s 0.7s forwards;
+}
+.hero-author {
+  font-family: var(--font-heading); font-weight: 500;
+  font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--ips-blue); margin-bottom: 40px;
+  opacity: 0; animation: fadeUp 0.8s 0.9s forwards;
+}
+.hero-stats {
+  display: flex; gap: 48px; justify-content: center; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.8s 1.1s forwards;
+}
+.hero-stat {
+  text-align: center;
+}
+.hero-stat-val {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 2.8rem; color: var(--ips-white);
+  line-height: 1;
+}
+.hero-stat-label {
+  font-size: 0.75rem; text-transform: uppercase;
+  letter-spacing: 1.5px; color: rgba(255,255,255,0.5);
+  margin-top: 4px;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── SECTIONS ─── */
+section { padding: 100px 40px; }
+.container { max-width: 1200px; margin: 0 auto; }
+
+.section-header {
+  text-align: center; margin-bottom: 64px;
+}
+.section-eyebrow {
+  font-family: var(--font-heading); font-weight: 500;
+  font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--ips-blue); margin-bottom: 12px;
+}
+.section-title {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  text-transform: uppercase; letter-spacing: -1px;
+  line-height: 1.1; color: var(--ips-navy);
+}
+.section-title.light { color: var(--ips-white); }
+.section-subtitle {
+  font-size: 1.1rem; color: var(--ips-grey);
+  max-width: 700px; margin: 16px auto 0;
+  font-weight: 300;
+}
+.section-subtitle.light { color: rgba(255,255,255,0.65); }
+
+/* ─── EXEC SUMMARY ─── */
+.exec-summary { background: var(--ips-light-grey); }
+.exec-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px; align-items: start;
+}
+.exec-text p {
+  font-size: 1.05rem; line-height: 1.8;
+  color: #333; margin-bottom: 20px;
+}
+.exec-callouts {
+  display: flex; flex-direction: column; gap: 24px;
+}
+.exec-callout {
+  background: var(--ips-white);
+  border-left: 4px solid var(--ips-blue);
+  padding: 28px 32px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: transform 0.3s;
+}
+.exec-callout:hover { transform: translateX(4px); }
+.exec-callout-label {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 0.7rem; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--ips-blue);
+  margin-bottom: 6px;
+}
+.exec-callout-val {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 2rem; color: var(--ips-navy);
+  line-height: 1.1;
+}
+.exec-callout-desc {
+  font-size: 0.9rem; color: var(--ips-grey);
+  margin-top: 4px;
+}
+
+/* ─── WHY ME ─── */
+.why-me { background: var(--ips-navy); }
+.credential-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
+}
+.credential-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.credential-card:hover {
+  border-color: var(--ips-blue);
+  background: rgba(0,124,195,0.05);
+}
+.credential-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 3px; height: 0;
+  background: var(--ips-teal);
+  transition: height 0.4s;
+}
+.credential-card:hover::before { height: 100%; }
+.credential-icon {
+  font-size: 1.5rem; margin-bottom: 16px;
+  display: inline-block;
+  width: 48px; height: 48px;
+  background: rgba(0,124,195,0.1);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ips-blue);
+}
+.credential-title {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 1rem; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--ips-white);
+  margin-bottom: 8px;
+}
+.credential-desc {
+  font-size: 0.9rem; color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+}
+
+/* ─── MARKET ─── */
+.market { background: var(--ips-white); }
+.forces-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.force-card {
+  padding: 40px 32px;
+  position: relative;
+  border: 1px solid #e8e8e8;
+  transition: all 0.3s;
+}
+.force-card:hover {
+  border-color: transparent;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+  transform: translateY(-4px);
+}
+.force-num {
+  font-family: var(--font-heading); font-weight: 900;
+  font-size: 4rem; line-height: 1;
+  color: var(--ips-light-grey);
+  position: absolute; top: 16px; right: 24px;
+}
+.force-color {
+  width: 48px; height: 4px;
+  margin-bottom: 20px;
+}
+.force-title {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 1.2rem; text-transform: uppercase;
+  color: var(--ips-navy); margin-bottom: 12px;
+}
+.force-desc {
+  font-size: 0.95rem; color: #555; line-height: 1.7;
+}
+.force-highlight {
+  display: inline-block; margin-top: 16px;
+  padding: 6px 14px;
+  font-family: var(--font-heading); font-weight: 600;
+  font-size: 0.7rem; text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-radius: 2px;
+}
+
+/* ─── EARLY WINS ─── */
+.early-wins {
+  background: var(--ips-light-grey);
+}
+.state-tabs {
+  display: flex; gap: 0; margin-bottom: 48px;
+  justify-content: center;
+}
+.state-tab {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 0.85rem; text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 16px 40px; cursor: pointer;
+  border: 1px solid #ddd;
+  background: var(--ips-white);
+  color: var(--ips-grey);
+  transition: all 0.3s;
+}
+.state-tab:first-child { border-radius: 4px 0 0 4px; }
+.state-tab:last-child { border-radius: 0 4px 4px 0; }
+.state-tab.active {
+  background: var(--ips-navy);
+  border-color: var(--ips-navy);
+  color: var(--ips-white);
+}
+.state-panel { display: none; }
+.state-panel.active { display: block; }
+.state-content {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+.state-info h3 {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 1.8rem; text-transform: uppercase;
+  color: var(--ips-navy); margin-bottom: 16px;
+}
+.state-info p {
+  font-size: 1rem; color: #555; line-height: 1.7;
+  margin-bottom: 16px;
+}
+.state-metrics {
+  display: flex; flex-direction: column; gap: 16px;
+}
+.state-metric {
+  background: var(--ips-white);
+  padding: 24px;
+  border-left: 3px solid var(--ips-teal);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.state-metric-label {
+  font-family: var(--font-heading); font-weight: 500;
+  font-size: 0.65rem; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--ips-grey);
+}
+.state-metric-val {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 1.6rem; color: var(--ips-navy);
+  margin-top: 2px;
+}
+
+/* ─── PILLARS ─── */
+.pillars { background: var(--ips-navy); position: relative; overflow: hidden; }
+.pillars::before {
+  content: ''; position: absolute;
+  top: -100px; right: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(0,178,143,0.08) 0%, transparent 70%);
+}
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+.pillar-card {
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.pillar-card:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.15);
+}
+.pillar-number {
+  font-family: var(--font-heading); font-weight: 900;
+  font-size: 5rem; line-height: 1;
+  position: absolute; top: 16px; right: 24px;
+  opacity: 0.06; color: var(--ips-white);
+}
+.pillar-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  font-family: var(--font-heading); font-weight: 600;
+  font-size: 0.6rem; text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  border-radius: 2px;
+}
+.pillar-title {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 1.5rem; text-transform: uppercase;
+  color: var(--ips-white); margin-bottom: 12px;
+}
+.pillar-desc {
+  font-size: 0.95rem; color: rgba(255,255,255,0.6);
+  line-height: 1.7; margin-bottom: 20px;
+}
+.pillar-target {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 1.1rem; color: var(--ips-teal);
+}
+
+/* ─── REVENUE BRIDGE ─── */
+.revenue { background: var(--ips-white); }
+.revenue-chart {
+  background: var(--ips-light-grey);
+  padding: 48px;
+  margin-bottom: 48px;
+}
+.chart-bars {
+  display: flex; align-items: flex-end;
+  justify-content: space-between;
+  height: 340px; gap: 20px;
+  padding: 0 20px;
+}
+.chart-col {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-end;
+  height: 100%;
+}
+.chart-bar-group {
+  width: 100%;
+  display: flex; flex-direction: column;
+  position: relative;
+}
+.chart-segment {
+  width: 100%; transition: all 0.6s;
+  position: relative;
+  cursor: pointer;
+}
+.chart-segment:hover { opacity: 0.85; filter: brightness(1.1); }
+.chart-total {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 1.4rem; color: var(--ips-navy);
+  text-align: center; margin-bottom: 8px;
+}
+.chart-label {
+  font-family: var(--font-heading); font-weight: 500;
+  font-size: 0.75rem; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--ips-grey);
+  text-align: center; margin-top: 12px;
+}
+.chart-growth {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 0.7rem; color: var(--ips-teal);
+  text-align: center; margin-top: 4px;
+}
+.chart-legend {
+  display: flex; gap: 32px; justify-content: center;
+  margin-top: 32px; flex-wrap: wrap;
+}
+.legend-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.8rem; color: #666;
+}
+.legend-swatch {
+  width: 14px; height: 14px;
+}
+
+/* ─── P&L ─── */
+.pnl { background: var(--ips-light-grey); }
+.pnl-table-wrap {
+  overflow-x: auto;
+}
+.pnl-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.pnl-table th {
+  font-family: var(--font-heading); font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  font-size: 0.75rem;
+  padding: 16px 20px;
+  background: var(--ips-navy);
+  color: var(--ips-white);
+  text-align: right;
+}
+.pnl-table th:first-child { text-align: left; }
+.pnl-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: right;
+  color: #333;
+}
+.pnl-table td:first-child {
+  text-align: left;
+  font-weight: 600;
+  color: var(--ips-navy);
+}
+.pnl-table tr:hover { background: rgba(0,124,195,0.04); }
+.pnl-table .row-highlight {
+  background: rgba(0,178,143,0.06);
+  font-weight: 700;
+}
+.pnl-table .row-highlight td { color: var(--ips-navy); font-weight: 700; }
+.pnl-table .row-total { border-top: 2px solid var(--ips-navy); }
+.pnl-table .positive { color: var(--ips-teal); }
+.pnl-table .negative { color: var(--ips-coral); }
+
+/* ─── TIMELINE ─── */
+.timeline-section { background: var(--ips-white); }
+.timeline {
+  position: relative;
+  padding-left: 60px;
+}
+.timeline::before {
+  content: '';
+  position: absolute; left: 24px; top: 0;
+  width: 2px; height: 100%;
+  background: linear-gradient(to bottom, var(--ips-blue), var(--ips-teal), var(--ips-purple));
+}
+.tl-quarter {
+  position: relative; margin-bottom: 48px;
+}
+.tl-dot {
+  position: absolute; left: -48px; top: 4px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  border: 3px solid var(--ips-blue);
+  background: var(--ips-white);
+}
+.tl-header {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 12px;
+}
+.tl-quarter-label {
+  font-family: var(--font-heading); font-weight: 900;
+  font-size: 1.2rem; text-transform: uppercase;
+  color: var(--ips-navy);
+}
+.tl-quarter-name {
+  font-family: var(--font-heading); font-weight: 500;
+  font-size: 0.7rem; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--ips-blue);
+  background: rgba(0,124,195,0.08);
+  padding: 4px 12px;
+}
+.tl-items {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+.tl-item {
+  font-size: 0.85rem; color: #555;
+  line-height: 1.5;
+  padding: 12px 16px;
+  background: var(--ips-light-grey);
+  border-left: 2px solid #ddd;
+}
+
+/* ─── COMPETITORS ─── */
+.competitors { background: var(--ips-navy); }
+.comp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.comp-card {
+  padding: 36px;
+  border: 1px solid rgba(255,255,255,0.08);
+  position: relative; overflow: hidden;
+  transition: all 0.3s;
+}
+.comp-card:hover { border-color: rgba(255,255,255,0.2); }
+.comp-accent {
+  width: 40px; height: 3px; margin-bottom: 20px;
+}
+.comp-name {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 1.3rem; text-transform: uppercase;
+  color: var(--ips-white); margin-bottom: 8px;
+}
+.comp-vulnerability {
+  font-family: var(--font-heading); font-weight: 500;
+  font-size: 0.65rem; text-transform: uppercase;
+  letter-spacing: 2px; margin-bottom: 16px;
+}
+.comp-desc {
+  font-size: 0.9rem; color: rgba(255,255,255,0.55);
+  line-height: 1.7; margin-bottom: 16px;
+}
+.comp-strategy {
+  font-size: 0.85rem; color: var(--ips-teal);
+  font-weight: 600;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 16px;
+}
+
+/* ─── GTM ─── */
+.gtm { background: var(--ips-light-grey); }
+.gtm-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.gtm-col-header {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 1.1rem; text-transform: uppercase;
+  color: var(--ips-navy); margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 3px solid var(--ips-blue);
+}
+.gtm-item {
+  padding: 16px 0;
+  border-bottom: 1px solid #ddd;
+}
+.gtm-item-title {
+  font-weight: 600; color: var(--ips-navy);
+  margin-bottom: 4px;
+}
+.gtm-item-desc {
+  font-size: 0.85rem; color: #666;
+}
+
+/* ─── PEOPLE ─── */
+.people { background: var(--ips-white); }
+.people-stats {
+  display: flex; gap: 48px; justify-content: center;
+  margin-bottom: 48px;
+}
+.people-stat {
+  text-align: center;
+}
+.people-stat-val {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 3rem; color: var(--ips-navy);
+}
+.people-stat-label {
+  font-size: 0.75rem; text-transform: uppercase;
+  letter-spacing: 1.5px; color: var(--ips-grey);
+}
+.hire-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.hire-card {
+  background: var(--ips-light-grey);
+  padding: 24px;
+  border-left: 3px solid var(--ips-blue);
+  transition: all 0.3s;
+}
+.hire-card:hover { border-color: var(--ips-teal); }
+.hire-role {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 0.85rem; text-transform: uppercase;
+  color: var(--ips-navy); margin-bottom: 4px;
+}
+.hire-timing {
+  font-size: 0.75rem; color: var(--ips-blue); font-weight: 600;
+}
+.hire-comp {
+  font-size: 0.8rem; color: var(--ips-grey); margin-top: 4px;
+}
+
+/* ─── RISK ─── */
+.risk { background: var(--ips-navy); }
+.risk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
+}
+.risk-card {
+  padding: 32px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+}
+.risk-name {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 1rem; text-transform: uppercase;
+  color: var(--ips-white); margin-bottom: 8px;
+}
+.risk-impact {
+  font-size: 0.85rem; color: var(--ips-coral);
+  margin-bottom: 12px;
+}
+.risk-mitigation {
+  font-size: 0.85rem; color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+}
+
+/* ─── GOVERNANCE ─── */
+.governance { background: var(--ips-light-grey); }
+.gate-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+.gate-timeline::before {
+  content: '';
+  position: absolute; top: 28px; left: 10%;
+  width: 80%; height: 3px;
+  background: linear-gradient(to right, var(--ips-blue), var(--ips-teal), var(--ips-purple), var(--ips-orange));
+}
+.gate-item {
+  text-align: center; padding: 0 16px;
+  position: relative;
+}
+.gate-dot {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--ips-white);
+  border: 3px solid var(--ips-blue);
+  margin: 18px auto 20px;
+  position: relative; z-index: 2;
+}
+.gate-label {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 1rem; text-transform: uppercase;
+  color: var(--ips-navy); margin-bottom: 4px;
+}
+.gate-timing {
+  font-family: var(--font-heading); font-weight: 500;
+  font-size: 0.65rem; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--ips-blue);
+  margin-bottom: 12px;
+}
+.gate-desc {
+  font-size: 0.8rem; color: #666; line-height: 1.5;
+}
+
+/* ─── CLOSING ─── */
+.closing {
+  background: var(--ips-navy);
+  position: relative; overflow: hidden;
+  text-align: center;
+  padding: 120px 40px;
+}
+.closing-corner {
+  position: absolute; bottom: 0; left: 0;
+  width: 0; height: 0;
+  border-bottom: 300px solid var(--ips-teal);
+  border-right: 300px solid transparent;
+  opacity: 0.12;
+}
+.closing h2 {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  text-transform: uppercase; letter-spacing: -1px;
+  color: var(--ips-white);
+  margin-bottom: 32px;
+}
+.closing h2 .blue { color: var(--ips-blue); }
+.closing-facts {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 40px; max-width: 1000px; margin: 0 auto 48px;
+}
+.closing-fact h3 {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 1rem; text-transform: uppercase;
+  color: var(--ips-teal); margin-bottom: 8px;
+}
+.closing-fact p {
+  font-size: 0.95rem; color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+}
+.closing-signature {
+  font-family: var(--font-heading); font-weight: 500;
+  font-size: 1.1rem; color: var(--ips-blue);
+  letter-spacing: 2px; text-transform: uppercase;
+  margin-top: 48px;
+}
+.closing-date {
+  font-size: 0.8rem; color: rgba(255,255,255,0.4);
+  margin-top: 8px;
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  background: #030d1e;
+  padding: 32px 40px;
+  text-align: center;
+}
+.footer p {
+  font-size: 0.75rem; color: rgba(255,255,255,0.3);
+  letter-spacing: 1px;
+}
+.footer a { color: var(--ips-blue); text-decoration: none; }
+
+/* ─── SCROLL ANIMATION ─── */
+.reveal {
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 0.7s, transform 0.7s;
+}
+.reveal.visible {
+  opacity: 1; transform: translateY(0);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .exec-grid, .state-content, .pillar-grid { grid-template-columns: 1fr; }
+  .forces-grid, .comp-grid, .gtm-cols { grid-template-columns: 1fr; }
+  .gate-timeline { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .gate-timeline::before { display: none; }
+  .tl-items { grid-template-columns: 1fr; }
+  .closing-facts { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  section { padding: 60px 20px; }
+  .nav-links { display: none; }
+  .hero-stats { flex-direction: column; gap: 24px; }
+  .state-tabs { flex-direction: column; }
+  .state-tab { border-radius: 0 !important; }
+  .people-stats { flex-direction: column; gap: 24px; }
+  .gate-timeline { grid-template-columns: 1fr; }
+  .hire-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Infosys <span class="accent">Public Services</span></div>
+    <div class="nav-links">
+      <a href="#exec">Summary</a>
+      <a href="#market">Market</a>
+      <a href="#wins">Early Wins</a>
+      <a href="#pillars">Strategy</a>
+      <a href="#revenue">Revenue</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#competitors">Competition</a>
+      <a href="#people">People</a>
+      <a href="#closing" class="nav-cta">Let's Talk</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-corner"></div>
+  <div class="hero-corner-2"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">A Four-Year Strategic Growth Plan</div>
+    <h1>Scaling SLG<br>to <span class="blue">$200M</span></h1>
+    <p class="hero-sub">Infosys Public Services — US State &amp; Local Government Practice. A comprehensive roadmap from $50M to $202M in annual revenue, built on market timing, platform solutions, and Day-One relationships.</p>
+    <p class="hero-author">Presented by Mike O'Brien &nbsp;|&nbsp; VP Candidate, State &amp; Local Government</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-val">$155B</div>
+        <div class="hero-stat-label">SLED IT Market</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">$202M</div>
+        <div class="hero-stat-label">Year 4 Revenue</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">15.3%</div>
+        <div class="hero-stat-label">Operating Margin</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">4x</div>
+        <div class="hero-stat-label">Revenue Growth</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXEC SUMMARY ═══ -->
+<section class="exec-summary" id="exec">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Executive Summary</div>
+      <h2 class="section-title">Navigate Your Next<br>to $200M</h2>
+    </div>
+    <div class="exec-grid">
+      <div class="exec-text reveal">
+        <p>The US SLED IT market is a $155 billion opportunity growing at 4.5% CAGR. IPS currently captures less than 0.03% of it. The Medicaid work-requirements mandate, the DOGE-era efficiency imperative, and AI's emergence as the #1 CIO priority create a once-in-a-decade entry window.</p>
+        <p>This plan delivers $3–5M in early wins within the first two quarters through existing relationships in Massachusetts, Illinois, and Oklahoma — then scales through geographic expansion, tuck-in acquisitions, and platform-led solutions to reach $202M by Year 4.</p>
+        <p>Twenty-plus years of government technology leadership, $500M+ in contracts captured, and the operational intensity to execute a plan this ambitious from Day One.</p>
+      </div>
+      <div class="exec-callouts reveal">
+        <div class="exec-callout">
+          <div class="exec-callout-label">The Ask</div>
+          <div class="exec-callout-val">$164M Total Investment</div>
+          <div class="exec-callout-desc">Including $105M for 2–3 tuck-in acquisitions funded from Infosys's $4.1B annual free cash flow</div>
+        </div>
+        <div class="exec-callout" style="border-color: var(--ips-teal);">
+          <div class="exec-callout-label" style="color: var(--ips-teal);">The Return</div>
+          <div class="exec-callout-val">$202M Revenue &amp; $31M OI</div>
+          <div class="exec-callout-desc">15.3% operating margins by Year 4, approaching CGI's 16.5% benchmark</div>
+        </div>
+        <div class="exec-callout" style="border-color: var(--ips-purple);">
+          <div class="exec-callout-label" style="color: var(--ips-purple);">The Proof</div>
+          <div class="exec-callout-val">$3–5M in 90 Days</div>
+          <div class="exec-callout-desc">Early wins through active executive relationships in MA, IL, and OK</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY ME ═══ -->
+<section class="why-me" id="whyme">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow" style="color: var(--ips-teal);">Leadership</div>
+      <h2 class="section-title light">Why I Am the Right Leader</h2>
+      <p class="section-subtitle light">Strategic seller. Delivery architect. Government insider.</p>
+    </div>
+    <div class="credential-grid">
+      <div class="credential-card reveal">
+        <div class="credential-icon">💰</div>
+        <div class="credential-title">$500M+ Contracts Captured</div>
+        <div class="credential-desc">Full capture lifecycle from RFI through award across federal and SLED markets. Deep understanding of government procurement dynamics.</div>
+      </div>
+      <div class="credential-card reveal">
+        <div class="credential-icon">🤝</div>
+        <div class="credential-title">Executive Relationships</div>
+        <div class="credential-desc">Active CIO/CTO-level relationships in MA, IL, OK. Immediate introductions to EOTSS, DoIT, and OMES leadership on Day One.</div>
+      </div>
+      <div class="credential-card reveal">
+        <div class="credential-icon">🏥</div>
+        <div class="credential-title">HHS/Medicaid Expertise</div>
+        <div class="credential-desc">Deep experience in Medicaid modernization, integrated eligibility, and CCWIS. Matching the market's largest growth vector.</div>
+      </div>
+      <div class="credential-card reveal">
+        <div class="credential-icon">⚡</div>
+        <div class="credential-title">Technical Foundation</div>
+        <div class="credential-desc">Active TS clearance. Google/AWS/Azure certified. Hands-on AI agent development experience — bridging strategy and implementation.</div>
+      </div>
+      <div class="credential-card reveal">
+        <div class="credential-icon">🏛️</div>
+        <div class="credential-title">Permitting & Digital Services</div>
+        <div class="credential-desc">Led multiple state permitting portal modernizations (IL, WV, CO). Directly relevant to IPS's digital government practice.</div>
+      </div>
+      <div class="credential-card reveal">
+        <div class="credential-icon">🎯</div>
+        <div class="credential-title">Proposal & BD Systems</div>
+        <div class="credential-desc">Built AI-powered proposal automation systems. Expert in Shipley capture methodology and GovCon BD infrastructure.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MARKET ═══ -->
+<section class="market" id="market">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Market Opportunity</div>
+      <h2 class="section-title">The $155 Billion<br>Market Window</h2>
+      <p class="section-subtitle">Three converging forces make this the best entry window in a decade.</p>
+    </div>
+    <div class="forces-grid">
+      <div class="force-card reveal">
+        <div class="force-num">01</div>
+        <div class="force-color" style="background: var(--ips-coral);"></div>
+        <div class="force-title">Medicaid Modernization Mandate</div>
+        <div class="force-desc">The One Big Beautiful Bill Act's community engagement requirements force all 50 states to modify eligibility systems by January 2027. CMS funds IT development at a 90/10 federal-to-state match — effectively free money for states.</div>
+        <div class="force-highlight" style="background: rgba(241,108,81,0.1); color: var(--ips-coral);">50 States Must Comply</div>
+      </div>
+      <div class="force-card reveal">
+        <div class="force-num">02</div>
+        <div class="force-color" style="background: var(--ips-bright-blue);"></div>
+        <div class="force-title">AI Becomes #1 CIO Priority</div>
+        <div class="force-desc">Per NASCIO, AI/GenAI displaced cybersecurity as the top state CIO priority for 2026 for the first time in 12 years. 82% of state CIO staff now use GenAI tools daily. This is IPS's entry point.</div>
+        <div class="force-highlight" style="background: rgba(15,159,250,0.1); color: var(--ips-bright-blue);">82% Daily GenAI Adoption</div>
+      </div>
+      <div class="force-card reveal">
+        <div class="force-num">03</div>
+        <div class="force-color" style="background: var(--ips-purple);"></div>
+        <div class="force-title">DOGE-Era Efficiency Imperative</div>
+        <div class="force-desc">Federal contract cancellations push competitors toward SLED while validating it as the most stable government IT market. States are launching their own efficiency audits — creating new advisory demand.</div>
+        <div class="force-highlight" style="background: rgba(150,53,150,0.1); color: var(--ips-purple);">Most Stable Gov IT Segment</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EARLY WINS ═══ -->
+<section class="early-wins" id="wins">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Revenue in 90 Days</div>
+      <h2 class="section-title">Early Wins Through<br>My Relationships</h2>
+    </div>
+    <div class="state-tabs reveal">
+      <div class="state-tab active" onclick="showState('ma')">Massachusetts</div>
+      <div class="state-tab" onclick="showState('il')">Illinois</div>
+      <div class="state-tab" onclick="showState('ok')">Oklahoma</div>
+    </div>
+
+    <div class="state-panel active" id="panel-ma">
+      <div class="state-content reveal">
+        <div class="state-info">
+          <h3>The $1.26B FutureTech Opportunity</h3>
+          <p>The FutureTech Act represents the single largest state IT investment authorization in New England history. Deep executive relationships across EOTSS and agency leadership allow immediate positioning of LaborForce and AI solutions.</p>
+          <p>Key opportunities include the Employment Modernization & Transformation (EMT) unemployment system overhaul, cybersecurity assessment, and MassHealth AI pilot.</p>
+        </div>
+        <div class="state-metrics">
+          <div class="state-metric">
+            <div class="state-metric-label">State IT Budget</div>
+            <div class="state-metric-val">$60.9B</div>
+          </div>
+          <div class="state-metric">
+            <div class="state-metric-label">90-Day Revenue Target</div>
+            <div class="state-metric-val">$500K – $1M</div>
+          </div>
+          <div class="state-metric">
+            <div class="state-metric-label">Year 1 Target</div>
+            <div class="state-metric-val">$3 – $5M</div>
+          </div>
+          <div class="state-metric">
+            <div class="state-metric-label">Year 4 Target</div>
+            <div class="state-metric-val">$16M</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="state-panel" id="panel-il">
+      <div class="state-content reveal">
+        <div class="state-info">
+          <h3>Consolidating Siloed Systems</h3>
+          <p>Illinois is actively consolidating siloed HHS systems into a unified cloud platform. Direct recent experience pursuing Illinois state technology contracts through DCEO and IDES provides deep procurement landscape knowledge.</p>
+          <p>Key opportunities include the $45M INEDSS replacement (disease surveillance), CCWIS modernization, and HHS cloud consolidation advisory.</p>
+        </div>
+        <div class="state-metrics">
+          <div class="state-metric">
+            <div class="state-metric-label">Annual IT Spend</div>
+            <div class="state-metric-val">$2 – $2.5B</div>
+          </div>
+          <div class="state-metric">
+            <div class="state-metric-label">90-Day Revenue Target</div>
+            <div class="state-metric-val">$300K – $750K</div>
+          </div>
+          <div class="state-metric">
+            <div class="state-metric-label">Medicaid Enrollees</div>
+            <div class="state-metric-val">3.4M</div>
+          </div>
+          <div class="state-metric">
+            <div class="state-metric-label">Year 4 Target</div>
+            <div class="state-metric-val">$12M</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="state-panel" id="panel-ok">
+      <div class="state-content reveal">
+        <div class="state-info">
+          <h3>Low Competition, High Accessibility</h3>
+          <p>Oklahoma has low competitive density and a centralized OMES procurement model that makes entry efficient. A small early win builds referenceable past performance for larger pursuits.</p>
+          <p>Key opportunities include PeopleSoft-to-cloud ERP migration advisory, OHCA Medicaid system modifications, and ServiceNow expansion.</p>
+        </div>
+        <div class="state-metrics">
+          <div class="state-metric">
+            <div class="state-metric-label">IT Budget</div>
+            <div class="state-metric-val">$500 – $800M</div>
+          </div>
+          <div class="state-metric">
+            <div class="state-metric-label">90-Day Revenue Target</div>
+            <div class="state-metric-val">$200K – $500K</div>
+          </div>
+          <div class="state-metric">
+            <div class="state-metric-label">Entry Strategy</div>
+            <div class="state-metric-val" style="font-size: 1rem;">SW1025 Staff Aug</div>
+          </div>
+          <div class="state-metric">
+            <div class="state-metric-label">Year 4 Target</div>
+            <div class="state-metric-val">$4 – $6M</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PILLARS ═══ -->
+<section class="pillars" id="pillars">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow" style="color: var(--ips-teal);">Growth Strategy</div>
+      <h2 class="section-title light">The Four-Pillar<br>Growth Engine</h2>
+      <p class="section-subtitle light">From $50M to $200M through four reinforcing pillars.</p>
+    </div>
+    <div class="pillar-grid">
+      <div class="pillar-card reveal">
+        <div class="pillar-number">01</div>
+        <div class="pillar-badge" style="background: rgba(0,124,195,0.15); color: var(--ips-blue);">Existing Base</div>
+        <div class="pillar-title">Deepen the $50M Base</div>
+        <div class="pillar-desc">Our eight-state footprint (CA, TX, FL, GA, SC, NC, RI, DE) is massively under-penetrated. California alone has a $13B IT budget — we likely capture less than $15M. Dedicated client partners will expand wallet share across every existing account.</div>
+        <div class="pillar-target">Target: $87M by Year 4 (+74%)</div>
+      </div>
+      <div class="pillar-card reveal">
+        <div class="pillar-number">02</div>
+        <div class="pillar-badge" style="background: rgba(0,178,143,0.15); color: var(--ips-teal);">New Markets</div>
+        <div class="pillar-title">Expand Into 15–20 States</div>
+        <div class="pillar-desc">Tiered geographic expansion from relationship states (MA, IL, OK) through high-budget targets (NY, PA, OH, VA) to strategic markets (MI, WA, CO, MN, NJ, MD) — building presence where CGI maintains 80+ offices.</div>
+        <div class="pillar-target">Target: $42M new-state revenue by Year 4</div>
+      </div>
+      <div class="pillar-card reveal">
+        <div class="pillar-number">03</div>
+        <div class="pillar-badge" style="background: rgba(150,53,150,0.15); color: var(--ips-purple);">Acquisitions</div>
+        <div class="pillar-title">2–3 Tuck-In Acquisitions</div>
+        <div class="pillar-desc">Organic expansion alone cannot deliver $200M in four years. Government procurement cycles run 6–18 months. Acquiring firms with existing state contracts compresses the timeline. Target: Medicaid/HHS IT firms, digital services/AI firms, and niche state consultancies.</div>
+        <div class="pillar-target">Target: $48M cumulative by Year 4</div>
+      </div>
+      <div class="pillar-card reveal">
+        <div class="pillar-number">04</div>
+        <div class="pillar-badge" style="background: rgba(223,153,38,0.15); color: var(--ips-orange);">Platforms</div>
+        <div class="pillar-title">Platform-Led Solutions</div>
+        <div class="pillar-desc">Highest-margin, most defensible revenue. Accelerate LaborForce expansion, build a modular MES Modernization Platform, deploy Topaz for SLG (Agentic AI), expand iCWS child welfare tools, and target the digital driver's license market.</div>
+        <div class="pillar-target">Target: $25M at 50–60% gross margins</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REVENUE BRIDGE ═══ -->
+<section class="revenue" id="revenue">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Financial Model</div>
+      <h2 class="section-title">Revenue Bridge<br>$50M → $202M</h2>
+    </div>
+    <div class="revenue-chart reveal">
+      <div class="chart-bars">
+        <div class="chart-col">
+          <div class="chart-total">$50M</div>
+          <div class="chart-bar-group">
+            <div class="chart-segment" style="height: 124px; background: var(--ips-blue);"></div>
+          </div>
+          <div class="chart-label">Year 0</div>
+          <div class="chart-growth">Baseline</div>
+        </div>
+        <div class="chart-col">
+          <div class="chart-total">$73M</div>
+          <div class="chart-bar-group">
+            <div class="chart-segment" style="height: 5px; background: var(--ips-orange);" title="New Solutions: $2M"></div>
+            <div class="chart-segment" style="height: 24px; background: var(--ips-purple);" title="Acquisitions: $10M"></div>
+            <div class="chart-segment" style="height: 7px; background: var(--ips-teal);" title="New States: $3M"></div>
+            <div class="chart-segment" style="height: 144px; background: var(--ips-blue);" title="Existing: $58M"></div>
+          </div>
+          <div class="chart-label">Year 1</div>
+          <div class="chart-growth">+46%</div>
+        </div>
+        <div class="chart-col">
+          <div class="chart-total">$121M</div>
+          <div class="chart-bar-group">
+            <div class="chart-segment" style="height: 20px; background: var(--ips-orange);" title="New Solutions: $8M"></div>
+            <div class="chart-segment" style="height: 74px; background: var(--ips-purple);" title="Acquisitions: $30M"></div>
+            <div class="chart-segment" style="height: 37px; background: var(--ips-teal);" title="New States: $15M"></div>
+            <div class="chart-segment" style="height: 168px; background: var(--ips-blue);" title="Existing: $68M"></div>
+          </div>
+          <div class="chart-label">Year 2</div>
+          <div class="chart-growth">+66%</div>
+        </div>
+        <div class="chart-col">
+          <div class="chart-total">$168M</div>
+          <div class="chart-bar-group">
+            <div class="chart-segment" style="height: 40px; background: var(--ips-orange);" title="New Solutions: $16M"></div>
+            <div class="chart-segment" style="height: 104px; background: var(--ips-purple);" title="Acquisitions: $42M"></div>
+            <div class="chart-segment" style="height: 79px; background: var(--ips-teal);" title="New States: $32M"></div>
+            <div class="chart-segment" style="height: 193px; background: var(--ips-blue);" title="Existing: $78M"></div>
+          </div>
+          <div class="chart-label">Year 3</div>
+          <div class="chart-growth">+39%</div>
+        </div>
+        <div class="chart-col">
+          <div class="chart-total">$202M</div>
+          <div class="chart-bar-group">
+            <div class="chart-segment" style="height: 62px; background: var(--ips-orange);" title="New Solutions: $25M"></div>
+            <div class="chart-segment" style="height: 119px; background: var(--ips-purple);" title="Acquisitions: $48M"></div>
+            <div class="chart-segment" style="height: 104px; background: var(--ips-teal);" title="New States: $42M"></div>
+            <div class="chart-segment" style="height: 215px; background: var(--ips-blue);" title="Existing: $87M"></div>
+          </div>
+          <div class="chart-label">Year 4</div>
+          <div class="chart-growth">+20%</div>
+        </div>
+      </div>
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-swatch" style="background: var(--ips-blue);"></div> Existing Accounts</div>
+        <div class="legend-item"><div class="legend-swatch" style="background: var(--ips-teal);"></div> New State Expansion</div>
+        <div class="legend-item"><div class="legend-swatch" style="background: var(--ips-purple);"></div> Acquisitions</div>
+        <div class="legend-item"><div class="legend-swatch" style="background: var(--ips-orange);"></div> Platform Solutions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ P&L ═══ -->
+<section class="pnl" id="pnl">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">P&amp;L Trajectory</div>
+      <h2 class="section-title">Investment &amp;<br>Return Profile</h2>
+      <p class="section-subtitle">Year 1 operating loss reflects front-loaded investment. Profitability in Year 2, approaching CGI benchmarks by Year 4.</p>
+    </div>
+    <div class="pnl-table-wrap reveal">
+      <table class="pnl-table">
+        <thead>
+          <tr><th>Line Item</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Year 4</th></tr>
+        </thead>
+        <tbody>
+          <tr class="row-highlight"><td>Revenue</td><td>$73M</td><td>$121M</td><td>$168M</td><td>$202M</td></tr>
+          <tr><td>Cost of Revenue</td><td>($54M)</td><td>($87M)</td><td>($118M)</td><td>($139M)</td></tr>
+          <tr><td>Gross Margin</td><td>26%</td><td>28%</td><td>30%</td><td>31%</td></tr>
+          <tr><td>Total SG&amp;A + Investment</td><td>($20M)</td><td>($27M)</td><td>($30M)</td><td>($32M)</td></tr>
+          <tr class="row-total"><td>Operating Income</td><td class="negative">($1M)</td><td class="positive">$7M</td><td class="positive">$20M</td><td class="positive">$31M</td></tr>
+          <tr class="row-highlight"><td>Operating Margin</td><td class="negative">(1.4%)</td><td class="positive">5.8%</td><td class="positive">11.9%</td><td class="positive">15.3%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top: 48px;" class="reveal">
+      <div class="section-header" style="margin-bottom: 32px;">
+        <div class="section-eyebrow">Investment Requirements</div>
+        <h2 class="section-title" style="font-size: 1.8rem;">$164M Total — Four Year Commitment</h2>
+      </div>
+      <div class="pnl-table-wrap">
+        <table class="pnl-table">
+          <thead>
+            <tr><th>Category</th><th>Yr 1</th><th>Yr 2</th><th>Yr 3</th><th>Yr 4</th><th>Total</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Sales/BD Headcount</td><td>$6M</td><td>$5M</td><td>$4M</td><td>$3M</td><td>$18M</td></tr>
+            <tr><td>Solution/Platform Dev</td><td>$5M</td><td>$6M</td><td>$5M</td><td>$4M</td><td>$20M</td></tr>
+            <tr><td>Marketing &amp; Events</td><td>$2M</td><td>$2.5M</td><td>$2.5M</td><td>$2M</td><td>$9M</td></tr>
+            <tr><td>Delivery Capacity</td><td>$3M</td><td>$4M</td><td>$3M</td><td>$2M</td><td>$12M</td></tr>
+            <tr><td>Acquisitions</td><td>$35M</td><td>$45M</td><td>$25M</td><td>$0</td><td>$105M</td></tr>
+            <tr class="row-highlight row-total"><td>Total Investment</td><td>$51M</td><td>$62.5M</td><td>$39.5M</td><td>$11M</td><td>$164M</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TIMELINE ═══ -->
+<section class="timeline-section" id="timeline">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Execution Plan</div>
+      <h2 class="section-title">Year 1: Month by Month</h2>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-quarter">
+        <div class="tl-dot" style="border-color: var(--ips-blue);"></div>
+        <div class="tl-header">
+          <div class="tl-quarter-label">Q1: Months 1–3</div>
+          <div class="tl-quarter-name">Secure the Beachhead</div>
+        </div>
+        <div class="tl-items">
+          <div class="tl-item">Announce SLG growth initiative; establish P&L; activate GovWin IQ; hire 3 Regional Directors and 3 Client Partners</div>
+          <div class="tl-item">Execute MA executive briefing — position LaborForce for EMT; begin IL INEDSS/HHS pursuit</div>
+          <div class="tl-item">Secure first MA engagement ($200–500K) and first IL engagement ($300K); begin Acquisition 1 identification</div>
+        </div>
+      </div>
+      <div class="tl-quarter">
+        <div class="tl-dot" style="border-color: var(--ips-teal);"></div>
+        <div class="tl-header">
+          <div class="tl-quarter-label">Q2: Months 4–6</div>
+          <div class="tl-quarter-name">Build Momentum</div>
+        </div>
+        <div class="tl-items">
+          <div class="tl-item">Acquisition 1 full due diligence; OK first revenue via SW1025 staff augmentation</div>
+          <div class="tl-item">Attend NASCIO Midyear — 10+ CIO meetings; IL advisory converts to larger engagement</div>
+          <div class="tl-item">CLOSE ACQUISITION 1 ($30–50M); leverage acquired contract vehicles; pipeline reaches $200M</div>
+        </div>
+      </div>
+      <div class="tl-quarter">
+        <div class="tl-dot" style="border-color: var(--ips-purple);"></div>
+        <div class="tl-header">
+          <div class="tl-quarter-label">Q3: Months 7–9</div>
+          <div class="tl-quarter-name">Accelerate</div>
+        </div>
+        <div class="tl-items">
+          <div class="tl-item">Acquisition 1 integration complete — cross-selling begins; LaborForce product roadmap for SLG-specific features</div>
+          <div class="tl-item">Texas DIR contract secured; OK ERP advisory won; NY and PA initial CIO briefings</div>
+          <div class="tl-item">Quarterly revenue reaches $18M run rate; headcount ~500; begin Acquisition 2 identification</div>
+        </div>
+      </div>
+      <div class="tl-quarter">
+        <div class="tl-dot" style="border-color: var(--ips-orange);"></div>
+        <div class="tl-header">
+          <div class="tl-quarter-label">Q4: Months 10–12</div>
+          <div class="tl-quarter-name">Prove the Model</div>
+        </div>
+        <div class="tl-items">
+          <div class="tl-item">NASCIO Annual — premier sponsorship, keynote on AI for Government, 15+ CIO meetings</div>
+          <div class="tl-item">At least one relationship state at $1M+ active engagement; Acquisition 2 LOI signed</div>
+          <div class="tl-item">YEAR 1 REVENUE: $73M achieved; 7+ deals won; win rate ≥28%; headcount ~580; pipeline $250M+</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 64px;" class="reveal">
+      <div class="section-header" style="margin-bottom: 32px;">
+        <h2 class="section-title" style="font-size: 1.8rem;">Years 2–4 Milestones</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;">
+        <div style="padding: 32px; border: 1px solid #e0e0e0;">
+          <div style="font-family: var(--font-heading); font-weight: 900; font-size: 2rem; color: var(--ips-blue);">Y2</div>
+          <div style="font-family: var(--font-heading); font-weight: 700; font-size: 1.3rem; color: var(--ips-navy); margin: 8px 0;">$121M Target</div>
+          <p style="font-size: 0.85rem; color: #666; line-height: 1.6;">Close Acquisition 2. MES Platform beta. Offices in Boston, Chicago, Columbus. Pipeline $500M. 15+ deals won. GovTech 100 inclusion.</p>
+        </div>
+        <div style="padding: 32px; border: 1px solid #e0e0e0;">
+          <div style="font-family: var(--font-heading); font-weight: 900; font-size: 2rem; color: var(--ips-teal);">Y3</div>
+          <div style="font-family: var(--font-heading); font-weight: 700; font-size: 1.3rem; color: var(--ips-navy); margin: 8px 0;">$168M Target</div>
+          <p style="font-size: 0.85rem; color: #666; line-height: 1.6;">Acquisition 3 if pursued. First $15M+ prime contract. LaborForce in 5+ states. AI contributing $4M+ quarterly. 18 states producing revenue.</p>
+        </div>
+        <div style="padding: 32px; border: 1px solid #e0e0e0;">
+          <div style="font-family: var(--font-heading); font-weight: 900; font-size: 2rem; color: var(--ips-purple);">Y4</div>
+          <div style="font-family: var(--font-heading); font-weight: 700; font-size: 1.3rem; color: var(--ips-navy); margin: 8px 0;">$202M Target</div>
+          <p style="font-size: 0.85rem; color: #666; line-height: 1.6;">20 states producing revenue. MES in 3–5 states. $5M+ average Tier 1 accounts. 15.3% operating margin. Begin planning $200M→$400M.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COMPETITORS ═══ -->
+<section class="competitors" id="competitors">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow" style="color: var(--ips-coral);">Competitive Intelligence</div>
+      <h2 class="section-title light">Weaponizing Incumbent<br>Vulnerabilities</h2>
+      <p class="section-subtitle light">No head-to-head displacement on mega-contracts. Instead, exploit specific, documented weaknesses.</p>
+    </div>
+    <div class="comp-grid">
+      <div class="comp-card reveal">
+        <div class="comp-accent" style="background: var(--ips-coral);"></div>
+        <div class="comp-name">Deloitte</div>
+        <div class="comp-vulnerability" style="color: var(--ips-coral);">The Trust Deficit</div>
+        <div class="comp-desc">The RIBridges data breach — 650,000 citizens impacted, $6.3M settlement, Brain Cipher dwelling undetected for months despite hundreds of firewall alerts — has created a structural trust deficit with state CIOs.</div>
+        <div class="comp-strategy">Strategy: Position IPS cybersecurity and blockchain-based records as the alternative for states reassessing Deloitte relationships.</div>
+      </div>
+      <div class="comp-card reveal">
+        <div class="comp-accent" style="background: var(--ips-orange);"></div>
+        <div class="comp-name">Tyler Technologies</div>
+        <div class="comp-vulnerability" style="color: var(--ips-orange);">The Security Achilles Heel</div>
+        <div class="comp-desc">Tyler's LockBit ransomware attack, exposure of sealed court records, and forced class-action settlement create an opening for IPS's secure modernization approach.</div>
+        <div class="comp-strategy">Strategy: Target Tyler-dependent courts and justice agencies with secure, modern cloud alternatives.</div>
+      </div>
+      <div class="comp-card reveal">
+        <div class="comp-accent" style="background: var(--ips-bright-blue);"></div>
+        <div class="comp-name">Gainwell Technologies</div>
+        <div class="comp-vulnerability" style="color: var(--ips-bright-blue);">Talent Acquisition Target</div>
+        <div class="comp-desc">$6B debt burden, offshoring backlash, and S&P downgrade have destabilized the workforce. Rather than competing for contracts, recruit their best people.</div>
+        <div class="comp-strategy">Strategy: Recruit Medicaid systems architects, state CIO relationships, and delivery leads with 15–20% comp premiums.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GTM ═══ -->
+<section class="gtm" id="gtm">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Go-to-Market</div>
+      <h2 class="section-title">How I Will Win Deals</h2>
+    </div>
+    <div class="gtm-cols reveal">
+      <div>
+        <div class="gtm-col-header">Contract Vehicles</div>
+        <div class="gtm-item"><div class="gtm-item-title">California CMAS (Q1)</div><div class="gtm-item-desc">Open enrollment via GSA Schedule. Application to award in weeks.</div></div>
+        <div class="gtm-item"><div class="gtm-item-title">Texas DIR (Q1–Q2)</div><div class="gtm-item-desc">DBITS and IT staffing. Opens the $5.4B Texas IT market.</div></div>
+        <div class="gtm-item"><div class="gtm-item-title">NASPO ValuePoint (Y1–2)</div><div class="gtm-item-desc">Cloud Solutions and IT Services. Access to all 50 states.</div></div>
+        <div class="gtm-item"><div class="gtm-item-title">Sourcewell / OMNIA (Q2)</div><div class="gtm-item-desc">Access to 50,000+ member agencies nationwide.</div></div>
+      </div>
+      <div>
+        <div class="gtm-col-header">Teaming Strategy</div>
+        <div class="gtm-item"><div class="gtm-item-title">Subcontract to Primes</div><div class="gtm-item-desc">Team with CGI, Deloitte, or Accenture on $50M+ Medicaid contracts as technology subcontractor.</div></div>
+        <div class="gtm-item"><div class="gtm-item-title">Civic Tech Partnerships</div><div class="gtm-item-desc">Partner with Nava PBC, Civilla, or Resultant on mid-size awards where their brand + IPS scale wins.</div></div>
+        <div class="gtm-item"><div class="gtm-item-title">Technology Partners</div><div class="gtm-item-desc">Joint GTM with Salesforce Government Cloud, AWS GovCloud, Microsoft Azure Government, ServiceNow.</div></div>
+      </div>
+      <div>
+        <div class="gtm-col-header">Marketing &amp; Thought Leadership</div>
+        <div class="gtm-item"><div class="gtm-item-title">NASCIO Annual + Midyear</div><div class="gtm-item-desc">$200K investment. Premier sponsorship and keynote positioning.</div></div>
+        <div class="gtm-item"><div class="gtm-item-title">APHSA/NAMD Conferences</div><div class="gtm-item-desc">$150K investment. Target HHS and Medicaid decision-makers.</div></div>
+        <div class="gtm-item"><div class="gtm-item-title">GovTech Digital Summits</div><div class="gtm-item-desc">$300K across 8–10 target states. Local CIO engagement.</div></div>
+        <div class="gtm-item"><div class="gtm-item-title">Total Annual Investment</div><div class="gtm-item-desc">$1.3M scaling to $2M by Year 3. Analyst relations with Gartner, Forrester.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PEOPLE ═══ -->
+<section class="people" id="people">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">People Strategy</div>
+      <h2 class="section-title">Building a 1,300-Person<br>SLG Organization</h2>
+    </div>
+    <div class="people-stats reveal">
+      <div class="people-stat">
+        <div class="people-stat-val">330</div>
+        <div class="people-stat-label">Current Headcount</div>
+      </div>
+      <div class="people-stat">
+        <div class="people-stat-val" style="color: var(--ips-blue);">→</div>
+        <div class="people-stat-label">&nbsp;</div>
+      </div>
+      <div class="people-stat">
+        <div class="people-stat-val">1,390</div>
+        <div class="people-stat-label">Year 4 Target</div>
+      </div>
+      <div class="people-stat">
+        <div class="people-stat-val" style="color: var(--ips-teal);">78%</div>
+        <div class="people-stat-label">Onshore Ratio</div>
+      </div>
+    </div>
+    <div class="section-header reveal" style="margin-bottom: 32px;">
+      <h3 class="section-title" style="font-size: 1.5rem;">First 10 Leadership Hires — Months 1–6</h3>
+      <p class="section-subtitle">Key advantage: Gainwell Technologies is destabilized. Their talent is recruitable at 15–20% premiums.</p>
+    </div>
+    <div class="hire-grid reveal">
+      <div class="hire-card">
+        <div class="hire-role">Regional Dir — Northeast</div>
+        <div class="hire-timing">Month 1</div>
+        <div class="hire-comp">$260K–$380K TC · Former state CIO or CGI/Deloitte lead</div>
+      </div>
+      <div class="hire-card">
+        <div class="hire-role">Regional Dir — Midwest</div>
+        <div class="hire-timing">Month 1–2</div>
+        <div class="hire-comp">$260K–$380K TC · Former state agency CIO or Big 4 govt</div>
+      </div>
+      <div class="hire-card">
+        <div class="hire-role">Head of Medicaid/HHS</div>
+        <div class="hire-timing">Month 1</div>
+        <div class="hire-comp">$280K–$420K TC · Gainwell, Deloitte, Maximus alumni</div>
+      </div>
+      <div class="hire-card">
+        <div class="hire-role">Head of Govt AI/Analytics</div>
+        <div class="hire-timing">Month 2</div>
+        <div class="hire-comp">$250K–$380K TC · Data science leader w/ govt experience</div>
+      </div>
+      <div class="hire-card">
+        <div class="hire-role">Capture/Proposal Director</div>
+        <div class="hire-timing">Month 1</div>
+        <div class="hire-comp">$180K–$260K TC · Shipley-certified BD specialist</div>
+      </div>
+      <div class="hire-card">
+        <div class="hire-role">Client Partners — MA, IL, OK</div>
+        <div class="hire-timing">Month 1</div>
+        <div class="hire-comp">$200K–$300K OTE ea · State govt alumni w/ relationships</div>
+      </div>
+      <div class="hire-card">
+        <div class="hire-role">Client Partners — NY, PA, OH, VA</div>
+        <div class="hire-timing">Month 2–3</div>
+        <div class="hire-comp">$200K–$300K OTE ea · CGI, Deloitte, NTT DATA alumni</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RISK ═══ -->
+<section class="risk" id="risk">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow" style="color: var(--ips-orange);">Risk Management</div>
+      <h2 class="section-title light">Risk Factors &amp;<br>Mitigation</h2>
+    </div>
+    <div class="risk-grid reveal">
+      <div class="risk-card">
+        <div class="risk-name">Talent Competition</div>
+        <div class="risk-impact">~5,000 person national talent pool for govt IT domain experts</div>
+        <div class="risk-mitigation">Recruit from Gainwell (destabilized); 15–20% comp premiums; Infosys internal training pipeline and global bench for rapid scaling.</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-name">Long Procurement Cycles</div>
+        <div class="risk-impact">6–18 months from RFP to award delays revenue recognition</div>
+        <div class="risk-mitigation">Acquisitions provide immediate revenue; cooperative vehicles (NASPO, Sourcewell) bypass competitive procurement entirely.</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-name">Incumbent Advantage</div>
+        <div class="risk-impact">Deloitte (25 states), CGI (46-year track record), Tyler (98% retention)</div>
+        <div class="risk-mitigation">Target modular components (CMS mandates modularity); subcontract on mega-deals for past performance; exploit documented security failures.</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-name">Federal Funding Uncertainty</div>
+        <div class="risk-impact">Medicaid cuts, ARPA sunset, SLCGP authorization expiration</div>
+        <div class="risk-mitigation">Cuts paradoxically increase IT demand — states must implement complex new eligibility rules. Diversify across multiple funding streams.</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-name">Onshore Delivery Cost</div>
+        <div class="risk-impact">70–90% onshore mandate compresses margins vs. commercial model</div>
+        <div class="risk-mitigation">Platform revenue (50–60% gross margin) improves blended margins. Target 31% gross margin by Year 4 through solution mix optimization.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GOVERNANCE ═══ -->
+<section class="governance" id="governance">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Governance</div>
+      <h2 class="section-title">CEO Decision Gates</h2>
+      <p class="section-subtitle">Monthly pipeline reviews. Quarterly business reviews. Semi-annual board updates. Annual strategy refresh.</p>
+    </div>
+    <div class="gate-timeline reveal">
+      <div class="gate-item">
+        <div class="gate-dot" style="border-color: var(--ips-blue);"></div>
+        <div class="gate-label">Gate 1</div>
+        <div class="gate-timing">Month 1</div>
+        <div class="gate-desc">Approve overall strategy, $59M P&L investment commitment, and $105M acquisition envelope</div>
+      </div>
+      <div class="gate-item">
+        <div class="gate-dot" style="border-color: var(--ips-teal);"></div>
+        <div class="gate-label">Gate 2</div>
+        <div class="gate-timing">Month 5–6</div>
+        <div class="gate-desc">Approve Acquisition 1 with due diligence findings, integration plan, and financial model</div>
+      </div>
+      <div class="gate-item">
+        <div class="gate-dot" style="border-color: var(--ips-purple);"></div>
+        <div class="gate-label">Gate 3</div>
+        <div class="gate-timing">Month 12</div>
+        <div class="gate-desc">Review Year 1 results vs. plan; approve Year 2 acceleration including Acquisition 2</div>
+      </div>
+      <div class="gate-item">
+        <div class="gate-dot" style="border-color: var(--ips-orange);"></div>
+        <div class="gate-label">Gate 4</div>
+        <div class="gate-timing">Month 24</div>
+        <div class="gate-desc">Review $121M Year 2 results; approve Year 3–4 plan including Acquisition 3; decide $200M→$400M trajectory</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CLOSING ═══ -->
+<section class="closing" id="closing">
+  <div class="closing-corner"></div>
+  <div class="container" style="position: relative; z-index: 2;">
+    <div class="reveal">
+      <div class="section-eyebrow" style="color: var(--ips-teal); margin-bottom: 24px;">The Case for Action</div>
+      <h2>Why This Plan <span class="blue">Wins Now</span></h2>
+    </div>
+    <div class="closing-facts reveal">
+      <div class="closing-fact">
+        <h3>The Market Is Ready</h3>
+        <p>$155B SLED IT market growing 4.5% annually. Immune to federal DOGE disruption. Medicaid's 90/10 match makes the government the underwriter of growth.</p>
+      </div>
+      <div class="closing-fact">
+        <h3>IPS Has the Platform</h3>
+        <p>Infosys's $19B global capability set — Topaz AI, Cobalt cloud, SAP, Oracle, Salesforce — needs to be channeled, localized, and relationship-wrapped for state buyers.</p>
+      </div>
+      <div class="closing-fact">
+        <h3>I Am Ready</h3>
+        <p>20+ years of government technology leadership. $500M+ in contracts captured. Active relationships in three high-value states. Operational intensity to execute from Day One.</p>
+      </div>
+    </div>
+    <div class="reveal" style="margin-top: 16px;">
+      <p style="font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 800px; margin: 0 auto 40px; line-height: 1.7;">$164M total investment generates $202M in annual revenue and $31M in operating income by Year 4. A 15.3% operating margin on a growing, contract-secured revenue base. The window is open — but every quarter of delay deepens incumbent advantage in states we haven't entered.</p>
+    </div>
+    <div class="closing-signature reveal">Mike O'Brien</div>
+    <div class="closing-date reveal">April 2026 &nbsp;|&nbsp; Confidential</div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <p>Infosys Public Services &nbsp;|&nbsp; <a href="#hero">Navigate Your Next</a> &nbsp;|&nbsp; Confidential Strategic Plan</p>
+</footer>
+
+<script>
+// State tabs
+function showState(id) {
+  document.querySelectorAll('.state-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.state-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+
+// Smooth active nav
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const top = section.offsetTop - 100;
+    if (scrollY >= top) current = section.getAttribute('id');
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--ips-blue)' : '';
+  });
+});
+</script>
+</body>
+</html>
