@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/strategic-plan.html", "destination": "/strategic-plan/" }
+  ]
+}
