@@ -1,13 +1,5 @@
 {
-  "rewrites": [
-    { "source": "/strategic-plan.html", "destination": "/strategic-plan/" }
-  ],
-  "headers": [
-    {
-      "source": "/strategic-plan/(.*)",
-      "headers": [
-        { "key": "Content-Type", "value": "text/html; charset=utf-8" }
-      ]
-    }
+  "redirects": [
+    { "source": "/strategic-plan.html", "destination": "/strategic-plan/", "permanent": false }
   ]
 }
