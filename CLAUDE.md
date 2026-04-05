@@ -8,7 +8,7 @@ Personal brand site for Mike O'Brien — GovTech executive, Thoughtworks Princip
 - **Styling:** Tailwind CSS 3.4 with custom design tokens
 - **Animation:** Framer Motion 11
 - **Language:** TypeScript 5
-- **Deployment:** Vercel (static) — domain at Namecheap
+- **Deployment:** Vercel (static) — domain DNS at Bluehost, A record → `216.198.79.1`
 
 ## Key Conventions
 
@@ -19,7 +19,7 @@ Personal brand site for Mike O'Brien — GovTech executive, Thoughtworks Princip
 - **Images:** Static in `public/images/`. Use `<ImageLightbox>` for project screenshots. Images are unoptimized (static export constraint).
 - **Contact form:** POSTs to `public/contact-handler.php` (PHP backend, not Next.js API routes).
 
-## Pages (8 routes)
+## Pages (8 routes + standalone pages)
 
 | Route | Purpose |
 |-------|---------|
@@ -31,6 +31,11 @@ Personal brand site for Mike O'Brien — GovTech executive, Thoughtworks Princip
 | `/projects` | Side projects — PropelAI, PGA Pick AI, Locus Maps, Chef de Cuisine |
 | `/life` | Personal — Reedville, family, golf, cooking (warm palette) |
 | `/contact` | Contact form, LinkedIn, email |
+| `/strategic-plan/` | Standalone HTML — Infosys Public Services SLG growth plan |
+
+### Standalone HTML Pages
+
+Standalone pages (not Next.js routes) go in `public/<name>/index.html`. This structure ensures they're served as-is without Next.js client-side routing intercepting them. The `vercel.json` has a redirect from `/strategic-plan.html` → `/strategic-plan/` for backwards compatibility.
 
 ## Build & Deploy
 
