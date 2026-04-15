@@ -59,8 +59,13 @@ export default function LifePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             <Reveal delay={100}>
-              <div className="aspect-[4/3] rounded-card overflow-hidden relative">
-                <Image src="/images/MeganBoys.jpeg" alt="Megan with John and Sam" fill className="object-cover" />
+              <div className="space-y-4">
+                <div className="aspect-[4/3] rounded-card overflow-hidden relative">
+                  <Image src="/images/meganboys.jpeg" alt="Megan with John and Sam" fill className="object-cover" />
+                </div>
+                <div className="aspect-[4/3] rounded-card overflow-hidden relative">
+                  <Image src="/images/mikeandmegan.jpeg" alt="Mike and Megan" fill className="object-cover" />
+                </div>
               </div>
             </Reveal>
             <Reveal>
@@ -140,7 +145,7 @@ export default function LifePage() {
             </Reveal>
             <Reveal delay={200}>
               <div className="aspect-[4/3] rounded-card overflow-hidden relative">
-                <Image src="/images/MikeBoat.jpeg" alt="Mike on the water in Reedville" fill className="object-cover" />
+                <Image src="/images/mikeboat.jpeg" alt="Mike on the water in Reedville" fill className="object-cover" />
               </div>
             </Reveal>
           </div>

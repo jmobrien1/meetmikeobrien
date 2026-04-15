@@ -7,7 +7,7 @@ import ImageLightbox from '@/components/image-lightbox';
 export const metadata: Metadata = {
   title: 'Side Projects',
   description:
-    'Personal projects by Mike O\'Brien — PropelAI, PGA Pick AI, Locus Maps, and Chef de Cuisine. AI-powered tools built outside the day job.',
+    'Personal projects by Mike O\'Brien — PropelAI, ClubHouse Pool, Locus Maps, and Chef de Cuisine. AI-powered tools built outside the day job.',
 };
 
 export default function ProjectsPage() {
@@ -31,7 +31,7 @@ export default function ProjectsPage() {
           <Reveal>
             <div className="h-full">
               <div className="aspect-[3/2] rounded-t-card overflow-hidden relative">
-                <ImageLightbox src="/images/PropelAI.jpg" alt="PropelAI platform screenshot" />
+                <ImageLightbox src="/images/propelai.png" alt="PropelAI platform screenshot" />
               </div>
               <div className="p-6 rounded-b-card border border-teal/[0.08] border-t-0 bg-navy-mid">
                 <h3 className="font-serif text-card-title font-normal text-white mb-2">PropelAI</h3>
@@ -50,17 +50,32 @@ export default function ProjectsPage() {
             </div>
           </Reveal>
 
-          {/* PGA Pick AI */}
+          {/* ClubHouse Pool */}
           <Reveal delay={100}>
             <div className="h-full">
-              <div className="aspect-[3/2] rounded-t-card overflow-hidden relative">
-                <ImageLightbox src="/images/PGAPicker.jpg" alt="PGA Pick AI analytics app" />
+              <div className="grid grid-cols-2 gap-1 rounded-t-card overflow-hidden">
+                <div className="aspect-[3/2] relative col-span-2">
+                  <ImageLightbox src="/images/Clubhouse.png" alt="ClubHouse Pool app" />
+                </div>
+                <div className="aspect-[3/2] relative">
+                  <ImageLightbox src="/images/ClubHouse1.png" alt="ClubHouse Pool feature view" />
+                </div>
+                <div className="aspect-[3/2] relative">
+                  <ImageLightbox src="/images/ClubHouse2.png" alt="ClubHouse Pool analytics" />
+                </div>
+                <div className="aspect-[3/2] relative col-span-2">
+                  <ImageLightbox src="/images/ClubHouse3.png" alt="ClubHouse Pool details" />
+                </div>
               </div>
               <div className="p-6 rounded-b-card border border-teal/[0.08] border-t-0 bg-navy-mid">
-                <h3 className="font-serif text-card-title font-normal text-white mb-2">PGA Pick AI</h3>
+                <h3 className="font-serif text-card-title font-normal text-white mb-2">ClubHouse Pool</h3>
                 <p className="font-sans text-body-sm text-slate leading-[1.7]">
-                  An AI-driven analytics app for PGA tournament predictions. Combines
-                  player stats, course history, and conditions to generate data-backed picks.
+                  A full-stack fantasy golf SaaS running live at clubhousepool.com.
+                  Multi-tenant snake draft, real-time ESPN scoring sync, automated
+                  head-to-head sidebets, multi-category prize engines, owner
+                  authentication via magic link, and a live event feed with
+                  AI-generated trash-talk headlines — built on FastAPI, React 19,
+                  and SQLite, self-hosted on an NVIDIA DGX Spark.
                 </p>
               </div>
             </div>
@@ -69,15 +84,26 @@ export default function ProjectsPage() {
           {/* LocusMaps */}
           <Reveal delay={200}>
             <div className="h-full">
-              <div className="aspect-[3/2] rounded-t-card overflow-hidden relative">
-                <ImageLightbox src="/images/LocusMaps.jpg" alt="LocusMaps custom poster platform" />
+              <div className="grid grid-cols-2 gap-1 rounded-t-card overflow-hidden">
+                <div className="aspect-[3/2] relative col-span-2">
+                  <ImageLightbox src="/images/LocusMaps1.png" alt="LocusMaps custom poster platform" />
+                </div>
+                <div className="aspect-[3/2] relative">
+                  <ImageLightbox src="/images/LocusMaps2.png" alt="LocusMaps map design view" />
+                </div>
+                <div className="aspect-[3/2] relative">
+                  <ImageLightbox src="/images/LocusMaps3.png" alt="LocusMaps poster gallery" />
+                </div>
               </div>
               <div className="p-6 rounded-b-card border border-teal/[0.08] border-t-0 bg-navy-mid">
                 <h3 className="font-serif text-card-title font-normal text-white mb-2">Locus Maps</h3>
                 <p className="font-sans text-body-sm text-slate leading-[1.7]">
-                  A B2C platform that uses AI to generate custom map posters, star maps,
-                  route maps, and coordinate prints — with automated print fulfillment
-                  through Gelato.
+                  A production B2C e-commerce platform at locusmapsai.com with 33
+                  AI art styles powered by Gemini, Mapbox GL vector maps, Stripe
+                  payments, and automated print fulfillment through Gelato — from
+                  digital downloads to framed canvas. Full pipeline: Next.js
+                  storefront on Vercel, FastAPI on Cloud Run, GPU render workers
+                  on Modal Labs, Cloudflare R2 storage, and an active Etsy shop.
                 </p>
               </div>
             </div>
