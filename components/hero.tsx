@@ -110,9 +110,7 @@ export default function Hero() {
             transitionDelay: '650ms',
           }}
         >
-          Currently leading Thoughtworks&apos; government AI practice. Previously grew
-          a single state account from $3M to $55M at Infosys and captured over $500M
-          in contract awards. I wrote{' '}
+          Currently leading Thoughtworks&apos; US government and education practice. I wrote{' '}
           <em className="text-teal italic">The Composable Agency</em>{' '}
           because I think the consulting industry is about to get fundamentally
           rewired by AI — and I want to be the one doing the rewiring.
