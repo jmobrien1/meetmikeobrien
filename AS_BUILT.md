@@ -56,11 +56,16 @@ meetmikeobrien/
 │   └── use-counter.ts             # Animated counter hook (2200ms, 60fps)
 ├── public/
 │   ├── images/
-│   │   ├── PropelAI.jpg
-│   │   ├── PGAPicker.jpg
-│   │   ├── LocusMaps.jpg
-│   │   ├── ChefDeCuisine.png
-│   │   └── ChefDeCuisine2.png
+│   │   ├── propelai.png
+│   │   ├── Clubhouse.png, ClubHouse1-3.png
+│   │   ├── LocusMaps1-3.png
+│   │   ├── ChefDeCuisine.png, ChefDeCuisine2.png
+│   │   ├── mike.jpg (headshot, resized)
+│   │   ├── meganboys.jpeg, mikeandmegan.jpeg, megan.jpeg
+│   │   ├── mikeboat.jpeg, mikegolf.jpeg, mikeboys.jpeg
+│   │   ├── leroy.jpeg, Isla.jpeg, meganleroyboat.jpeg
+│   │   ├── bbh.jpg
+│   │   └── jmUTV.mp4, SamUTV.mp4
 │   ├── downloads/
 │   │   └── composable-agency.pdf
 │   └── contact-handler.php
@@ -115,8 +120,8 @@ meetmikeobrien/
 
 ### Home (`/`)
 - Full-viewport hero with radial gradient backgrounds and grid overlay
-- Eyebrow → Headline ("From AOL to *agentic AI*...") → Subheadline → 3 CTAs
-- Metrics bar: $500M+ captures, $5B+ pipeline, 20+ years, 1,730% growth, 95%+ extraction
+- Eyebrow → Headline ("From AOL to *agentic AI* — I've spent 20 years making government technology actually work.") → Subheadline → 3 CTAs
+- Metrics bar: 20+ Years in GovTech, $500M+ Contracts Captured, 2+2+1 Dogs/Sons/Beautiful Wives, 0 👎 Holes in One
 - Overview pull quote section
 - Featured work cards (3-column): Composable Agency, SGX, PropelAI
 
@@ -143,14 +148,15 @@ meetmikeobrien/
 
 ### Projects (`/projects`)
 - 3-column responsive grid of side project cards with ImageLightbox
-- **PropelAI** — AI proposal generation (links to /propelai)
-- **PGA Pick AI** — AI tournament prediction analytics
-- **Locus Maps** — AI custom map poster platform with Gelato fulfillment
-- **Chef de Cuisine** — AI culinary assistant with 4-agent pipeline (equipment/skill audit → dish concept → cooking timeline → chef finishing). Local LLM + RAG. Two screenshots: recipe input form and Mise en Temps timeline.
+- **PropelAI** — AI proposal generation (links to /propelai). Single image.
+- **ClubHouse Pool** — Full-stack fantasy golf SaaS (clubhousepool.com). Multi-image grid (4 images). FastAPI, React 19, ESPN live scoring, snake draft, sidebets, AI trash-talk live feed, self-hosted on DGX Spark.
+- **Locus Maps** — AI custom map poster e-commerce (locusmapsai.com). Multi-image grid (3 images). 33 AI styles via Gemini, Mapbox GL, Stripe, Gelato fulfillment, Etsy shop.
+- **Chef de Cuisine** — AI culinary assistant with 4-agent pipeline. Two screenshots: recipe input form and Mise en Temps timeline.
 
 ### Life (`/life`) — Warm Palette
 - Background shifts to warm sand, accents to terra
-- Sections: Reedville & the Water, Family, Golf, Cooking
+- Sections: Reedville & the Water, Family (meganboys + mikeandmegan stacked), Golf, Cooking
+- Photo grid (5-column): Leroy, Isla, family on boat, Mike with boys, Megan
 
 ### Contact (`/contact`)
 - Form (name, email, subject dropdown, message) → PHP backend

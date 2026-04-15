@@ -16,7 +16,7 @@ Personal brand site for Mike O'Brien — GovTech executive, Thoughtworks Princip
 - **Colors:** Navy (#0a1628) base, teal (#2dd4a8) accent, slate (#94a3b8) secondary text. The `/life` page uses a warm palette (sand/terra/amber).
 - **Components:** Reusable `<SectionHeader>`, `<Reveal>`, `<MetricCard>`, `<ImageLightbox>` used across all pages.
 - **Content:** All copy is hardcoded in components and `lib/case-studies.ts`. No CMS, no data fetching.
-- **Images:** Static in `public/images/`. Use `<ImageLightbox>` for project screenshots. Images are unoptimized (static export constraint).
+- **Images:** Static in `public/images/`. Use `<ImageLightbox>` for project screenshots (single image, click-to-zoom). Multi-image projects use grid layouts with multiple `<ImageLightbox>` components. Images are unoptimized (static export constraint).
 - **Contact form:** POSTs to `public/contact-handler.php` (PHP backend, not Next.js API routes).
 
 ## Pages (8 routes + standalone pages)
@@ -28,7 +28,7 @@ Personal brand site for Mike O'Brien — GovTech executive, Thoughtworks Princip
 | `/work` | 7 case studies (expandable cards) |
 | `/insights` | Composable Agency white paper, blog links, speaking |
 | `/propelai` | PropelAI product detail with pipeline visualizer |
-| `/projects` | Side projects — PropelAI, PGA Pick AI, Locus Maps, Chef de Cuisine |
+| `/projects` | Side projects — PropelAI, ClubHouse Pool, Locus Maps, Chef de Cuisine |
 | `/life` | Personal — Reedville, family, golf, cooking (warm palette) |
 | `/contact` | Contact form, LinkedIn, email |
 | `/strategic-plan/` | Standalone HTML — Infosys Public Services SLG growth plan |
