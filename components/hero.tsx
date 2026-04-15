@@ -168,7 +168,7 @@ export default function Hero() {
                 2+2+1
               </div>
               <div className="text-[0.78rem] text-slate mt-2 font-sans font-medium tracking-[0.06em] uppercase">
-                Dogs, Sons &amp; 1 Beautiful Wife
+                Dogs, Sons, Beautiful Wives
               </div>
             </div>
           </Reveal>
