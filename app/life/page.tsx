@@ -201,7 +201,7 @@ export default function LifePage() {
               { src: '/images/Isla.jpeg', alt: 'Isla' },
               { src: '/images/meganleroyboat.jpeg', alt: 'The O\'Brien family' },
               { src: '/images/mikeboys.jpeg', alt: 'Mike with John and Sam' },
-              { src: '/images/mikeboat.jpeg', alt: 'Out on the boat' },
+              { src: '/images/megan.jpeg', alt: 'Megan' },
             ].map((photo, i) => (
               <Reveal key={photo.alt} delay={i * 80}>
                 <div className="aspect-square rounded-card overflow-hidden relative">
