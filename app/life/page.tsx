@@ -195,12 +195,13 @@ export default function LifePage() {
       {/* Photo Grid */}
       <section style={{ padding: '60px clamp(24px, 6vw, 96px)' }} className="bg-[#eedcc5]">
         <div className="content-max">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
             {[
-              { src: '/images/LeroyIsla.jpeg', alt: 'Leroy and Isla' },
+              { src: '/images/leroy.jpeg', alt: 'Leroy' },
+              { src: '/images/Isla.jpeg', alt: 'Isla' },
               { src: '/images/meganleroyboat.jpeg', alt: 'The O\'Brien family' },
               { src: '/images/mikeboys.jpeg', alt: 'Mike with John and Sam' },
-              { src: '/images/MikeBoat.jpeg', alt: 'Out on the boat' },
+              { src: '/images/mikeboat.jpeg', alt: 'Out on the boat' },
             ].map((photo, i) => (
               <Reveal key={photo.alt} delay={i * 80}>
                 <div className="aspect-square rounded-card overflow-hidden relative">
