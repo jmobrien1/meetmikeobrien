@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import MetricCard from './metric-card';
+import Reveal from './reveal';
 
 export default function Hero() {
   const [loaded, setLoaded] = useState(false);
@@ -153,12 +154,25 @@ export default function Hero() {
           background: 'linear-gradient(180deg, transparent, rgba(10,22,40,0.5))',
         }}
       >
-        <div className="content-max grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-0.5 py-3">
-          <MetricCard value={500} prefix="$" suffix="M+" label="Contract Captures" delay={100} />
-          <MetricCard value={5} prefix="$" suffix="B+" label="Pipeline Built" delay={250} />
-          <MetricCard value={20} suffix="+" label="Years in GovTech" delay={400} />
-          <MetricCard value={1730} suffix="%" label="Account Growth" delay={550} />
-          <MetricCard value={95} suffix="%+" label="Compliance Extraction" delay={700} />
+        <div className="content-max grid grid-cols-2 lg:grid-cols-4 gap-0.5 py-3">
+          <MetricCard value={20} suffix="+" label="Years in GovTech" delay={100} />
+          <MetricCard value={500} prefix="$" suffix="M+" label="Contracts Captured" delay={250} />
+          <Reveal delay={400}>
+            <div
+              className="py-7 px-5 border-l-2 border-teal rounded-r-lg"
+              style={{
+                background: 'linear-gradient(135deg, rgba(45, 212, 168, 0.15), transparent)',
+              }}
+            >
+              <div className="text-metric font-mono font-bold text-teal tracking-[-0.02em] leading-none">
+                2+2+1
+              </div>
+              <div className="text-[0.78rem] text-slate mt-2 font-sans font-medium tracking-[0.06em] uppercase">
+                Dogs, Sons &amp; 1 Beautiful Wife
+              </div>
+            </div>
+          </Reveal>
+          <MetricCard value={0} label="Holes in One" delay={550} />
         </div>
       </div>
     </section>
