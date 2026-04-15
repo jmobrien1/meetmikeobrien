@@ -172,7 +172,21 @@ export default function Hero() {
               </div>
             </div>
           </Reveal>
-          <MetricCard value={0} label="Holes in One" delay={550} />
+          <Reveal delay={550}>
+            <div
+              className="py-7 px-5 border-l-2 border-teal rounded-r-lg"
+              style={{
+                background: 'linear-gradient(135deg, rgba(45, 212, 168, 0.15), transparent)',
+              }}
+            >
+              <div className="text-metric font-mono font-bold text-teal tracking-[-0.02em] leading-none">
+                0 <span className="opacity-40">👎</span>
+              </div>
+              <div className="text-[0.78rem] text-slate mt-2 font-sans font-medium tracking-[0.06em] uppercase">
+                Holes in One
+              </div>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
