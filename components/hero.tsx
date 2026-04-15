@@ -98,7 +98,7 @@ export default function Hero() {
           <span className="italic bg-gradient-to-br from-teal to-[#4fd1c5] bg-clip-text text-transparent">
             agentic AI
           </span>
-          —transforming how government serves people.
+          —I&apos;ve spent 20 years making government technology actually work.
         </h1>
 
         {/* Subheadline */}
@@ -110,10 +110,12 @@ export default function Hero() {
             transitionDelay: '650ms',
           }}
         >
-          20+ years transforming government technology. $500M+ in contract captures.
-          From $3M accounts to the largest cloud migration in Massachusetts history.
-          Author of{' '}
-          <em className="text-teal italic">The Composable Agency</em>.
+          Currently leading Thoughtworks&apos; government AI practice. Previously grew
+          a single state account from $3M to $55M at Infosys and captured over $500M
+          in contract awards. I wrote{' '}
+          <em className="text-teal italic">The Composable Agency</em>{' '}
+          because I think the consulting industry is about to get fundamentally
+          rewired by AI — and I want to be the one doing the rewiring.
         </p>
 
         {/* CTAs */}
