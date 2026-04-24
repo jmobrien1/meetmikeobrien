@@ -19,7 +19,7 @@ Personal brand site for Mike O'Brien — GovTech executive, Thoughtworks Princip
 - **Images:** Static in `public/images/`. Use `<ImageLightbox>` for project screenshots (single image, click-to-zoom). Multi-image projects use grid layouts with multiple `<ImageLightbox>` components. Images are unoptimized (static export constraint).
 - **Contact form:** POSTs to `public/contact-handler.php` (PHP backend, not Next.js API routes).
 
-## Pages (8 routes + standalone pages)
+## Pages (8 routes + standalone pages, not in nav)
 
 | Route | Purpose |
 |-------|---------|
@@ -32,6 +32,7 @@ Personal brand site for Mike O'Brien — GovTech executive, Thoughtworks Princip
 | `/life` | Personal — Reedville, family, golf, cooking (warm palette) |
 | `/contact` | Contact form, LinkedIn, email |
 | `/strategic-plan/` | Standalone HTML — Infosys Public Services SLG growth plan |
+| `/rivah` | Standalone HTML — River Retreat infographic (142 Swann Ct, Reedville, VA). Not in nav. |
 
 ### Standalone HTML Pages
 
