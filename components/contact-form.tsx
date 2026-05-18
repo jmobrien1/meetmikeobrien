@@ -13,7 +13,7 @@ export default function ContactForm() {
     const payload = Object.fromEntries(data.entries());
 
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('/api/contact/', {
         method: 'POST',
         body: JSON.stringify(payload),
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
