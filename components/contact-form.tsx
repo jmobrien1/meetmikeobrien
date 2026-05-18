@@ -10,12 +10,13 @@ export default function ContactForm() {
     setStatus('sending');
     const form = e.currentTarget;
     const data = new FormData(form);
+    const payload = Object.fromEntries(data.entries());
 
     try {
-      const res = await fetch('/contact-handler.php', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
-        body: data,
-        headers: { Accept: 'application/json' },
+        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       });
       if (res.ok) {
         setStatus('sent');
