@@ -17,7 +17,7 @@ Personal brand site for Mike O'Brien — GovTech executive, Thoughtworks Princip
 - **Components:** Reusable `<SectionHeader>`, `<Reveal>`, `<MetricCard>`, `<ImageLightbox>` used across all pages.
 - **Content:** All copy is hardcoded in components and `lib/case-studies.ts`. No CMS, no data fetching.
 - **Images:** Static in `public/images/`. Use `<ImageLightbox>` for project screenshots (single image, click-to-zoom). Multi-image projects use grid layouts with multiple `<ImageLightbox>` components. Images are unoptimized (static export constraint).
-- **Contact form:** POSTs JSON to `/api/contact` — a Vercel Serverless Function (`api/contact.js` at project root) that calls the Brevo Transactional Email API. Lives outside Next.js (`output: 'export'` disallows Next.js API routes); Vercel detects `/api/*` at root and deploys it as a Function alongside the static export. Requires `BREVO_API_KEY` env var in the Vercel project.
+- **Contact form:** POSTs JSON to `/api/contact/` — a Vercel Serverless Function (`api/contact.js` at project root) that calls the Brevo Transactional Email API. Lives outside Next.js (`output: 'export'` disallows Next.js API routes); Vercel detects `/api/*` at root and deploys it as a Function alongside the static export. Requires `BREVO_API_KEY` env var in the Vercel project. The Brevo account's IP allowlist must remain **deactivated** (Security → Authorised IPs) — Vercel Functions run on a rotating pool of AWS Lambda IPs.
 
 ## Pages (8 routes + standalone pages, not in nav)
 

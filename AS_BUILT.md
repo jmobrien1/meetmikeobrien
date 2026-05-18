@@ -12,7 +12,7 @@ Live at **meetmikeobrien.com**. Personal brand site for Mike O'Brien — GovTech
 
 ## Architecture
 
-Static-exported Next.js App Router site. No server-side rendering, no API routes, no CMS. All content is hardcoded. Contact form uses a PHP backend (`contact-handler.php`).
+Static-exported Next.js App Router site. No server-side rendering, no Next.js API routes, no CMS. All content is hardcoded. Contact form is handled by a Vercel Serverless Function at `/api/contact/` (`api/contact.js`) that calls the Brevo Transactional Email API.
 
 ### Build Configuration (`next.config.mjs`)
 - `output: 'export'` — generates static HTML to `out/`
@@ -49,7 +49,7 @@ meetmikeobrien/
 │   ├── career-timeline.tsx        # 8-position expandable timeline
 │   ├── case-study-card.tsx        # Expandable case study cards
 │   ├── image-lightbox.tsx         # Image zoom modal (Escape to close)
-│   └── contact-form.tsx           # Form → POST to PHP backend
+│   └── contact-form.tsx           # Form → POST JSON to /api/contact/
 ├── lib/
 │   ├── tokens.ts                  # Design system color tokens (JS export)
 │   ├── case-studies.ts            # 7 case study data objects
@@ -66,9 +66,10 @@ meetmikeobrien/
 │   │   ├── leroy.jpeg, Isla.jpeg, meganleroyboat.jpeg
 │   │   ├── bbh.jpg
 │   │   └── jmUTV.mp4, SamUTV.mp4
-│   ├── downloads/
-│   │   └── composable-agency.pdf
-│   └── contact-handler.php
+│   └── downloads/
+│       └── composable-agency.pdf
+├── api/
+│   └── contact.js                 # Vercel Serverless Function — Brevo email send
 ├── tailwind.config.ts
 ├── next.config.mjs
 ├── postcss.config.mjs
@@ -159,7 +160,7 @@ meetmikeobrien/
 - Photo grid (5-column): Leroy, Isla, family on boat, Mike with boys, Megan
 
 ### Contact (`/contact`)
-- Form (name, email, subject dropdown, message) → PHP backend
+- Form (name, email, subject dropdown, message) → POST JSON to `/api/contact/` (Vercel Function) → Brevo Transactional Email API
 - LinkedIn, email, Calendly embed
 
 ---

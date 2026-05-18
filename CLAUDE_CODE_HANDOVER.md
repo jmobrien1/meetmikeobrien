@@ -251,6 +251,7 @@ Sections:
 
 - Intro: "Interested in working together, booking a speaking engagement, or learning more about PropelAI?"
 - Contact form: Name, Email, Subject dropdown (General, Speaking, PropelAI Demo, Partnership, Media), Message
+- Backend: POSTs JSON to `/api/contact/` (Vercel Function in `api/contact.js`) → Brevo Transactional Email API → delivers to `obrienmike@gmail.com`. Requires `BREVO_API_KEY` in Vercel env vars; Brevo IP allowlist must stay deactivated.
 - LinkedIn: linkedin.com/in/obrienmike74
 - Email: obrienmike@gmail.com (or professional domain when ready)
 - Optional: Calendly embed for 30-min intro calls
@@ -326,9 +327,10 @@ meetmikeobrien/
 │   │   ├── LocusMaps.jpg
 │   │   ├── ChefDeCuisine.png   # Recipe input form screenshot
 │   │   └── ChefDeCuisine2.png  # Mise en Temps timeline screenshot
-│   ├── downloads/
-│   │   └── composable-agency.pdf
-│   └── contact-handler.php     # PHP form backend
+│   └── downloads/
+│       └── composable-agency.pdf
+├── api/
+│   └── contact.js              # Vercel Serverless Function — POST /api/contact/ → Brevo
 ├── tailwind.config.ts
 ├── next.config.mjs            # Static export, unoptimized images, trailing slashes
 ├── postcss.config.mjs
